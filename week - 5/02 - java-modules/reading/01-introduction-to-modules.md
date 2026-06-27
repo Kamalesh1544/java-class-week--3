@@ -1,0 +1,11 @@
+# Introduction to Modules — The Chill Version
+
+Okay so before Java 9 things were kind of messy. You know how when you start a Java project you download a bunch of JAR files, put them in a lib folder, and hope everything works together? Yeah that was the only way. The problem was called JAR Hell. Imagine you have two libraries, Library A needs Gson version 2.8 and Library B needs Gson version 2.10. You can only have one version on the classpath right? So one of them breaks. And the thing is the JVM would not even tell you until your app was running and suddenly boom something fails.
+
+Another problem was that all the internal stuff in Java was exposed. Like you could literally use internal APIs that Oracle said don't use this we might change it. And people used them anyway because nothing stopped them. Then when Java updated and those internal things changed everyone's apps broke. Not fun.
+
+So Java 9 came along with something called Project Jigsaw which is basically modules. Think of modules like putting walls between different parts of your code. You decide what goes inside each room and only open the doors you want people to walk through. Everything else stays locked. That is strong encapsulation. Before Java 9 everything was one big open space where anyone could access anything. Now you control exactly who sees what.
+
+The other big thing modules solve is dependencies. Instead of downloading a hundred JAR files and throwing them in a folder you tell Maven or Gradle exactly what you need and it figures out the rest. No more version conflicts because the module system knows exactly what version you are using and what it depends on. And because it knows everything upfront it can validate everything at startup instead of finding out something is broken three hours into running your app.
+
+Performance is another win. Before Java 9 the JVM had to load the entire classpath even if your app only used like ten percent of it. With modules the JVM only loads what you actually need. Faster startup, less memory usage. Pretty nice deal if you ask me. So modules are basically Java growing up and becoming more organized. It is like going from a messy room where you throw everything on the floor to having labeled drawers and shelves. Takes a bit more effort to set up but everything runs smoother afterwards.
